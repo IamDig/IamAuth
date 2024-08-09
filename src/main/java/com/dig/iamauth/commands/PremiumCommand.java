@@ -1,2 +1,4 @@
-package com.dig.iamauth;public class PremiumCommand {
+package com.dig.iamauth.commands;
+
+public class PremiumCommand {
 }

@@ -1,5 +1,6 @@
-package com.dig.iamauth;
+package com.dig.iamauth.listeners;
 
+import com.dig.iamauth.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

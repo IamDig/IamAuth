@@ -1,2 +1,4 @@
-package com.dig.iamauth;public class LoginCommand {
+package com.dig.iamauth.commands;
+
+public class LoginCommand {
 }

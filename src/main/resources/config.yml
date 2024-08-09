@@ -10,12 +10,8 @@ premium-auth-message:
   - '&aYou logged in with a &2premium account&a!'
 register-command-message:
   - '&aYou successfully registered your account!'
-  - '&2&l->&7Use &2/premium &7to automatically log in when you join the server'
-  - '&8[&e&l!&8] &4&lWARNING&7: Do it only if you are using a premium Minecraft account!'
 login-command-message:
   - '&aYou successfully logged into the server!'
-  - '&2&l-> &7Use &2/premium &7to automatically log in when you join the server'
-premium-command-kick-reason: '&aYour account is now set as a &2premium account&a!'
 already-registered-message:
   - '&cYou cannot do that! You are already registered!'
 already-logged-message:

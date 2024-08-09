@@ -1,3 +1,5 @@
+login-timer: 60 # Seconds
+timer-expired-kick-reason: '&8[&e&l!&8] &cYou took too much time to log in! &8[&e&l!&8]'
 register-auth-message:
   - '&cYou have to register to log into the server!'
   - '&4&l-> &7Use &c/register [password] [confirmpassword]&7 to register'
@@ -13,8 +15,7 @@ register-command-message:
 login-command-message:
   - '&aYou successfully logged into the server!'
   - '&2&l-> &7Use &2/premium &7to automatically log in when you join the server'
-premium-command-kick-message:
-  - '&aYour account is now set as a &2premium account&a!'
+premium-command-kick-reason: '&aYour account is now set as a &2premium account&a!'
 already-registered-message:
   - '&cYou cannot do that! You are already registered!'
 already-logged-message:

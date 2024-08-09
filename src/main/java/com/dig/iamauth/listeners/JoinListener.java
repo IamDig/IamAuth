@@ -1,6 +1,7 @@
 package com.dig.iamauth.listeners;
 
 import com.dig.iamauth.Main;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -33,5 +34,13 @@ public class JoinListener implements Listener {
                 }
             }
         }
+        int timer = main.getConfig().getInt("login-timer") * 20;
+        Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
+            if (!Main.getLogged().contains(player.getUniqueId())) {
+                String reason = main.getConfig().getString("timer-expired-kick-reason");
+                player.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
+            }
+        }, timer);
+
     }
 }

@@ -1,18 +1,18 @@
 register-auth-message:
   - '&cYou have to register to log into the server!'
-  - '&4&l⮕ &7Use &c/register [password] [confirmpassword]&7 to register'
+  - '&4&l-> &7Use &c/register [password] [confirmpassword]&7 to register'
 login-auth-message:
   - '&cLog into the server with your password!'
-  - '&4&l⮕ &7Use &c/login [password] &7to log in'
+  - '&4&l-> &7Use &c/login [password] &7to log in'
 premium-auth-message:
   - '&aYou logged in with a &2premium account&a!'
 register-command-message:
   - '&aYou successfully registered your account!'
-  - '&2&l⮕ &7Use &2/premium &7to automatically log in when you join the server'
-  - '&e⚠ &4&lWARNING&7: Do it only if you are using a premium Minecraft account!'
+  - '&2&l->&7Use &2/premium &7to automatically log in when you join the server'
+  - '&8[&e&l!&8] &4&lWARNING&7: Do it only if you are using a premium Minecraft account!'
 login-command-message:
   - '&aYou successfully logged into the server!'
-  - '&2&l⮕ &7Use &2/premium &7to automatically log in when you join the server'
+  - '&2&l-> &7Use &2/premium &7to automatically log in when you join the server'
 premium-command-kick-message:
   - '&aYour account is now set as a &2premium account&a!'
 already-registered-message:
@@ -20,8 +20,8 @@ already-registered-message:
 already-logged-message:
   - '&cYou cannot do that! You are already logged in!'
 wrong-password-message:
-  - '&e⚠ &4Wrong password!'
+  - '&8[&e&l!&8] &4Wrong password!'
   - '&7Try again: &c/login [password]'
 different-passwords-message:
-  - '&e⚠ &4Different passwords!'
+  - '&8[&e&l!&8] &4Different passwords!'
   - '&7Try again: &c/register [password] [confirmpassword]'

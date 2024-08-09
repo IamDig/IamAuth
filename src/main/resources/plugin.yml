@@ -1,3 +1,13 @@
 name: IamAuth
 version: '${project.version}'
 main: com.dig.iamauth.Main
+commands:
+  register:
+    aliases:
+      - reg
+  login:
+    aliases:
+      - log
+  premium:
+    aliases:
+      - prem

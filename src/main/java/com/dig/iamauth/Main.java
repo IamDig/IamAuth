@@ -17,17 +17,19 @@ public final class Main extends JavaPlugin {
     }
     private static List<UUID> premium;
     public static List<UUID> getPremium() {
-        return registered;
+        return premium;
     }
     private static List<UUID> logged;
     public static List<UUID> getLogged() {
-        return registered;
+        return logged;
     }
 
     @Override
     public void onEnable() {
         getLogger().warning("IamAuth Enabled! - by IamDig_");
         registered = new ArrayList<>();
+        logged = new ArrayList<>();
+        premium = new ArrayList<>();
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         Bukkit.getPluginManager().registerEvents(new JoinListener(this), this);

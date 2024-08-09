@@ -30,7 +30,9 @@ public class RegisterCommand implements CommandExecutor {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                         }
                     } else {
-
+                        for (String msg : main.getConfig().getStringList("different-passwords-message")) {
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+                        }
                     }
                 }
             } else {

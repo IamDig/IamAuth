@@ -1,5 +1,6 @@
 package com.dig.iamauth;
 
+import com.dig.iamauth.commands.ChangepasswordCommand;
 import com.dig.iamauth.commands.LoginCommand;
 import com.dig.iamauth.commands.RegisterCommand;
 import com.dig.iamauth.listeners.AuthListener;
@@ -41,6 +42,7 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ChatListener(this), this);
         getCommand("register").setExecutor(new RegisterCommand(this));
         getCommand("login").setExecutor(new LoginCommand(this));
+        getCommand("changepassword").setExecutor(new ChangepasswordCommand(this));
     }
 
     @Override

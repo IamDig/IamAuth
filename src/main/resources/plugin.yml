@@ -8,3 +8,6 @@ commands:
     aliases:
       - changepass
   unregister:
+  auth:
+    aliases:
+      - iamauth

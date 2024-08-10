@@ -34,6 +34,5 @@ public class JoinListener implements Listener {
                 player.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
             }
         }, timer);
-
     }
 }

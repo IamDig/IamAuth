@@ -42,4 +42,18 @@ unregister-kick-reason: '&4You have been unregistered! Reconnect to register aga
 unregister-command-message:
   - '&aSuccessfully unregistered %target%!'
   - '&4-> &7The player now has to register again.'
+config-reload-message:
+  - '&aConfiguration file reloaded successfully!'
+  - '&4-> Server/plugins/IamAuth/config.yml'
+help-mesage:
+  - '&lIam&4&lAuth &8- &3&lHelp'
+  - '- &b/register [password] [confirmpassword] &8-> &7Register your account by setting your login password'
+  - '- &b/login [password] &8-> &7Log into the server by using the password you set when registering'
+  - '- &b/changepass [old-pw] [new-pw] &8-> &7Change your login password.'
+  - '- &b/unregister [player] &8-> Unregister a player so they can set a new password in case they have lost the old one'
+  - '&eRequires permission &8-> &ciamauth.unregister'
+  - '- &b/auth help &8-> &7Makes you visualize this message'
+  - '&eRequires permission &8-> &ciamauth.help'
+  - '- &b/auth reload &8-> &7 Reload config.yml'
+  - '&eRequires permission &8-> &ciamauth.reloadconfig'
 

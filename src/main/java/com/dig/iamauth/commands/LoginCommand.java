@@ -5,10 +5,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import sun.jvm.hotspot.opto.MachIfNode;
 
 import javax.swing.text.PlainDocument;
+import java.io.File;
 
 public class LoginCommand implements CommandExecutor {
     private Main main;
@@ -18,11 +20,13 @@ public class LoginCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (commandSender instanceof Player) {
+            File file = new File(main.getDataFolder(), "passwords.yml");
+            YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
             Player sender = (Player) commandSender;
             if (Main.getRegistered().contains(sender.getUniqueId())) {
                 if (!Main.getLogged().contains(sender.getUniqueId())) {
                     if (args.length == 1) {
-                        if (args[0].equals(main.getConfig().getString(sender.getUniqueId() + " password"))) {
+                        if (args[0].equals(modifyFile.getString(sender.getUniqueId() + " password"))) {
                             Main.getLogged().add(sender.getUniqueId());
                             for (String msg : main.getConfig().getStringList("login-command-message")) {
                                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));

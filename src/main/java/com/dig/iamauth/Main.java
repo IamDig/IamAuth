@@ -1,5 +1,6 @@
 package com.dig.iamauth;
 
+import com.dig.iamauth.commands.LoginCommand;
 import com.dig.iamauth.commands.RegisterCommand;
 import com.dig.iamauth.listeners.AuthListener;
 import com.dig.iamauth.listeners.JoinListener;
@@ -17,10 +18,6 @@ public final class Main extends JavaPlugin {
     public static List<UUID> getRegistered() {
         return registered;
     }
-    private static List<UUID> premium;
-    public static List<UUID> getPremium() {
-        return premium;
-    }
     private static List<UUID> logged;
     public static List<UUID> getLogged() {
         return logged;
@@ -35,13 +32,13 @@ public final class Main extends JavaPlugin {
         getLogger().warning("IamAuth Enabled! - by IamDig_");
         registered = new ArrayList<>();
         logged = new ArrayList<>();
-        premium = new ArrayList<>();
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         Bukkit.getPluginManager().registerEvents(new JoinListener(this), this);
         Bukkit.getPluginManager().registerEvents(new QuitListener(this), this);
         Bukkit.getPluginManager().registerEvents(new AuthListener(this), this);
         getCommand("register").setExecutor(new RegisterCommand(this));
+        getCommand("login").setExecutor(new LoginCommand(this));
     }
 
     @Override

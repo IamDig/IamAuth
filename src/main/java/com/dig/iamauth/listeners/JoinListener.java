@@ -16,12 +16,6 @@ public class JoinListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
-        if (Main.getPremium().contains(player.getUniqueId())) {
-            Main.getLogged().add(player.getUniqueId());
-            for (String msg : main.getConfig().getStringList("premium-auth-message")) {
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-            }
-        } else {
             if (!Main.getLogged().contains(player.getUniqueId())) {
                 if (Main.getRegistered().contains(player.getUniqueId())) {
                     for (String msg : main.getConfig().getStringList("login-auth-message")) {
@@ -33,7 +27,6 @@ public class JoinListener implements Listener {
                     }
                 }
             }
-        }
         int timer = main.getConfig().getInt("login-timer") * 20;
         Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
             if (!Main.getLogged().contains(player.getUniqueId())) {

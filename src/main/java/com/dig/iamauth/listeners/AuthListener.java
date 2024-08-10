@@ -17,8 +17,10 @@ public class AuthListener implements Listener {
         Player p = e.getPlayer();
         Location f = e.getFrom();
         Location t = e.getTo();
-        if (f != t) {
-            p.teleport(f);
+        if (!Main.getLogged().contains(p.getUniqueId())) {
+            if (f != t) {
+                p.teleport(f);
+            }
         }
     }
 }

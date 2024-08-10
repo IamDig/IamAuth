@@ -22,3 +22,6 @@ wrong-password-message:
 different-passwords-message:
   - '&8[&e&l!&8] &4Different passwords!'
   - '&7Try again: &c/register [password] [confirmpassword]'
+invalid-command-usage:
+  - '&cInvalid command usage!'
+  - '&eCorrect usage &8-> &c%usage%'

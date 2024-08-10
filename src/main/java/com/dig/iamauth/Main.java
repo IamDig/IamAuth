@@ -3,6 +3,7 @@ package com.dig.iamauth;
 import com.dig.iamauth.commands.ChangepasswordCommand;
 import com.dig.iamauth.commands.LoginCommand;
 import com.dig.iamauth.commands.RegisterCommand;
+import com.dig.iamauth.commands.UnregisterCommand;
 import com.dig.iamauth.listeners.AuthListener;
 import com.dig.iamauth.listeners.ChatListener;
 import com.dig.iamauth.listeners.JoinListener;
@@ -43,6 +44,7 @@ public final class Main extends JavaPlugin {
         getCommand("register").setExecutor(new RegisterCommand(this));
         getCommand("login").setExecutor(new LoginCommand(this));
         getCommand("changepassword").setExecutor(new ChangepasswordCommand(this));
+        getCommand("unregister").setExecutor(new UnregisterCommand(this));
     }
 
     @Override

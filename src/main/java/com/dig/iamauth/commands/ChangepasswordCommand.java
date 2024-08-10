@@ -23,6 +23,8 @@ public class ChangepasswordCommand implements CommandExecutor {
                         if (args[0].equals(main.getConfig().getString(sender.getUniqueId() + " password"))) {
                             String newpass = args[1];
                             main.getConfig().set(sender.getUniqueId() + " password", newpass);
+                            main.getConfig().options().copyDefaults();
+                            main.saveDefaultConfig();
                             String reason = main.getConfig().getString("changepassword-kick-reason");
                             sender.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
                         }

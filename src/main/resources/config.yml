@@ -10,8 +10,10 @@ premium-auth-message:
   - '&aYou logged in with a &2premium account&a!'
 register-command-message:
   - '&aYou successfully registered your account!'
+  - '&4&l-> &7Change password with &c/changepass [old-pw] [new-pw]'
 login-command-message:
   - '&aYou successfully logged into the server!'
+  - '&4&l-> &7Change password with &c/changepass [old-pw] [new-pw]'
 already-registered-message:
   - '&cYou cannot do that! You are already registered!'
 already-logged-message:
@@ -25,3 +27,7 @@ different-passwords-message:
 invalid-command-usage:
   - '&cInvalid command usage!'
   - '&eCorrect usage &8-> &c%usage%'
+login-command-usage: '/login [password]'
+register-command-usage: '/register [password] [confirmpassword]'
+unregister-command-usage: '/unregister [player]'
+changepassword-command-usage: '/changepass [new-pw] [old-pw]'

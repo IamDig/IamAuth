@@ -3,6 +3,7 @@ package com.dig.iamauth;
 import com.dig.iamauth.commands.LoginCommand;
 import com.dig.iamauth.commands.RegisterCommand;
 import com.dig.iamauth.listeners.AuthListener;
+import com.dig.iamauth.listeners.ChatListener;
 import com.dig.iamauth.listeners.JoinListener;
 import com.dig.iamauth.listeners.QuitListener;
 import org.bukkit.Bukkit;
@@ -37,6 +38,7 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new JoinListener(this), this);
         Bukkit.getPluginManager().registerEvents(new QuitListener(this), this);
         Bukkit.getPluginManager().registerEvents(new AuthListener(this), this);
+        Bukkit.getPluginManager().registerEvents(new ChatListener(this), this);
         getCommand("register").setExecutor(new RegisterCommand(this));
         getCommand("login").setExecutor(new LoginCommand(this));
     }

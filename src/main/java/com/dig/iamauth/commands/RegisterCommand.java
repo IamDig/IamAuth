@@ -36,7 +36,7 @@ public class RegisterCommand implements CommandExecutor {
                     }
                 } else {
                     for (String msg : main.getConfig().getStringList("invalid-command-usage")) {
-                        msg = msg.replace("%usage%", main.getCommand("register").getUsage());
+                        msg = msg.replace("%usage%", main.getConfig().getString("register-command-usage"));
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                     }
                 }

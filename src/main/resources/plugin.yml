@@ -3,6 +3,7 @@ version: '${project.version}'
 main: com.dig.iamauth.Main
 commands:
   register:
-    usage: '/register [password] [password]'
   login:
-    usage: '/login [password]'
+  changepassword:
+    aliases:
+      - changepass

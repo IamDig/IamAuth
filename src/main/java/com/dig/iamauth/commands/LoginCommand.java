@@ -34,7 +34,7 @@ public class LoginCommand implements CommandExecutor {
                         }
                     } else {
                         for (String msg : main.getConfig().getStringList("invalid-command-usage")) {
-                            msg = msg.replace("%usage%", main.getCommand("login").getUsage());
+                            msg = msg.replace("%usage%", main.getConfig().getString("login-command-usage"));
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                         }
                     }

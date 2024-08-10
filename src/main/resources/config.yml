@@ -57,4 +57,7 @@ help-message:
   - '&eRequires permission &8-> &ciamauth.help'
   - '- &b/auth reload &8-> &7 Reload config.yml'
   - '&eRequires permission &8-> &ciamauth.reloadconfig'
+chatting-before-login:
+  - '&cYou have to log into the server to chat!'
+  - '&4-> &7Use &c/register &7 or &c/login&7'
 

@@ -1,6 +1,7 @@
 package com.dig.iamauth.listeners;
 
 import com.dig.iamauth.Main;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,7 +17,9 @@ public class ChatListener implements Listener {
         Player player = e.getPlayer();
         if (!Main.getLogged().contains(player.getUniqueId())) {
             e.setCancelled(true);
-
+            for (String msg : main.getConfig().getStringList("chatting-before-login")) {
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+            }
         }
     }
 }

@@ -17,21 +17,17 @@ public class CommandListener implements Listener {
         this.main = main;
     }
 
-    private List<String> okCommands = main.getConfig().getStringList("accepted-commands-before-login");
-
     @EventHandler
-    public void onCommand(PlayerCommandPreprocessEvent e) {
-        Player p = e.getPlayer();
-        String cmd = e.getMessage().toLowerCase();
-        if (Main.getLogged().contains(p.getUniqueId())) return;
-        for (String okCmds : okCommands) {
-            if (cmd.startsWith(okCmds.toLowerCase())) {
-                return;
-            } else {
-                e.setCancelled(true);
+    public void onCommandPreprocess(PlayerCommandPreprocessEvent e) {
+        String command = e.getMessage().toLowerCase();
+        Player player = e.getPlayer();
+        if (!Main.getLogged().contains(player.getName())) {
+            List<String> okCommands = main.getConfig().getStringList("accepted-commands-before-login");
+            if (!okCommands.contains(command)) {
                 for (String msg : main.getConfig().getStringList("command-before-login-message")) {
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                 }
+                e.setCancelled(true);
             }
         }
     }

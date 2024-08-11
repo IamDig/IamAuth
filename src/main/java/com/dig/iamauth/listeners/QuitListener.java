@@ -7,10 +7,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class QuitListener implements Listener {
-    private Main main;
-    public QuitListener(Main main) {
-        this.main = main;
-    }
     @EventHandler
     public  void onQuit(PlayerQuitEvent e) {
         Player player = e.getPlayer();

@@ -55,9 +55,10 @@ public final class Main extends JavaPlugin {
 
         // Listeners
         Bukkit.getPluginManager().registerEvents(new JoinListener(this), this);
-        Bukkit.getPluginManager().registerEvents(new QuitListener(this), this);
-        Bukkit.getPluginManager().registerEvents(new AuthListener(this), this);
+        Bukkit.getPluginManager().registerEvents(new QuitListener(), this);
+        Bukkit.getPluginManager().registerEvents(new AuthListener(), this);
         Bukkit.getPluginManager().registerEvents(new ChatListener(this), this);
+        Bukkit.getPluginManager().registerEvents(new CommandListener(this), this);
 
         // Commands
         getCommand("register").setExecutor(new RegisterCommand(this));

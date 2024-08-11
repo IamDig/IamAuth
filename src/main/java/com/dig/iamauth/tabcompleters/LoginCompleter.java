@@ -13,7 +13,7 @@ public class LoginCompleter implements TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] args) {
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], Arrays.asList(""), new ArrayList<>());
+            return StringUtil.copyPartialMatches(args[0], Arrays.asList("password"), new ArrayList<>());
         }
         return new ArrayList<>();
     }

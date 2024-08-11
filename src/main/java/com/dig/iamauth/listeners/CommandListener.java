@@ -21,9 +21,15 @@ public class CommandListener implements Listener {
     public void onCommandPreprocess(PlayerCommandPreprocessEvent e) {
         String command = e.getMessage().toLowerCase();
         Player player = e.getPlayer();
-        if (!Main.getLogged().contains(player.getName())) {
-            List<String> okCommands = main.getConfig().getStringList("accepted-commands-before-login");
-            if (!okCommands.contains(command)) {
+        if (!Main.getLogged().contains(player.getUniqueId())) {
+            boolean allowedCommandFound = false;
+            for (String str : main.getConfig().getStringList("accepted-commands-before-login")) {
+                if (command.contains(str)) {
+                    allowedCommandFound = true;
+                    break;
+                }
+            }
+            if (!allowedCommandFound) {
                 for (String msg : main.getConfig().getStringList("command-before-login-message")) {
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                 }

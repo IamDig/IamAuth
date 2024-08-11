@@ -27,7 +27,11 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
 
-        getLogger().warning("IamAuth Enabled! - by IamDig_");
+        getLogger().warning("<------------------------>");
+        getLogger().warning("     IamAuth: Enabled     ");
+        getLogger().warning("                          ");
+        getLogger().warning("        By IamDig_        ");
+        getLogger().warning("<------------------------>");
 
         logged = new ArrayList<>();
 

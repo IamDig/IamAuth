@@ -23,33 +23,21 @@ public class ChangepasswordCommand implements CommandExecutor {
             File file = new File(main.getDataFolder(), "passwords.yml");
             YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
             Player sender = (Player) commandSender;
-            if (modifyFile.getString(sender.getUniqueId() + " password") != null) {
-                if (Main.getLogged().contains(sender.getUniqueId())) {
-                    if (args.length == 2) {
-                        if (args[0].equals(modifyFile.getString(sender.getUniqueId() + " password"))) {
-                            String newpass = args[1];
-                            modifyFile.set(sender.getUniqueId() + " password", newpass);
-                            try {
-                                modifyFile.save(file);
-                            } catch (IOException ex) {
-                                main.getLogger().warning("[IamAuth] It was not possible to create passwords.yml file");
-                            }
-                            String reason = main.getConfig().getString("changepassword-kick-reason");
-                            sender.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
-                        }
-                    } else {
-                        for (String msg : main.getConfig().getStringList("invalid-command-usage")) {
-                            msg = msg.replace("%usage%", main.getConfig().getString("changepassword-command-usage"));
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-                        }
+            if (args.length == 2) {
+                if (args[0].equals(modifyFile.getString(sender.getUniqueId() + " password"))) {
+                    String newpass = args[1];
+                    modifyFile.set(sender.getUniqueId() + " password", newpass);
+                    try {
+                        modifyFile.save(file);
+                    } catch (IOException ex) {
+                        main.getLogger().warning("[IamAuth] It was not possible to create passwords.yml file");
                     }
-                } else {
-                    for (String msg : main.getConfig().getStringList("login-auth-message")) {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-                    }
+                    String reason = main.getConfig().getString("changepassword-kick-reason");
+                    sender.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
                 }
             } else {
-                for (String msg : main.getConfig().getStringList("register-auth-message")) {
+                for (String msg : main.getConfig().getStringList("invalid-command-usage")) {
+                    msg = msg.replace("%usage%", main.getConfig().getString("changepassword-command-usage"));
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                 }
             }

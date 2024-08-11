@@ -7,6 +7,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
+import java.util.List;
+
 public class ChatListener implements Listener {
     private Main main;
     public ChatListener(Main main) {
@@ -17,7 +19,7 @@ public class ChatListener implements Listener {
         Player player = e.getPlayer();
         if (!Main.getLogged().contains(player.getUniqueId())) {
             e.setCancelled(true);
-            for (String msg : main.getConfig().getStringList("chatting-before-login")) {
+            for (String msg : main.getConfig().getStringList("chatting-before-login-message")) {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
             }
         }

@@ -33,7 +33,7 @@ public class JoinListener implements Listener {
                 }
             }
         int timer = main.getConfig().getInt("login-timer") * 20;
-        Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
+        Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
             if (!Main.getLogged().contains(player.getUniqueId())) {
                 String reason = main.getConfig().getString("timer-expired-kick-reason");
                 player.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));

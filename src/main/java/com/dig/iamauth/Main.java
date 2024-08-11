@@ -20,14 +20,26 @@ public final class Main extends JavaPlugin {
         return logged;
     }
 
-    public static Main getPlugin() {
+    public static Main getInstance() {
         return getPlugin(Main.class);
     }
 
     @Override
     public void onEnable() {
 
-        // passwords.yml
+        getLogger().warning("IamAuth Enabled! - by IamDig_");
+
+        logged = new ArrayList<>();
+
+        saveDefaultConfig();
+
+        init();
+
+        initPasswordFile();
+
+    }
+
+    private void initPasswordFile() {
         File file = new File(getDataFolder(), "passwords.yml");
         if (!file.exists()) {
             try {
@@ -36,23 +48,9 @@ public final class Main extends JavaPlugin {
                 getLogger().warning("[IamAuth] It was not possible to create passwords.yml file");
             }
         }
+    }
 
-        YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
-        try {
-            modifyFile.save(file);
-        } catch (IOException e) {
-            getLogger().warning("[IamAuth] It was not possible to save passwords.yml");
-        }
-
-        // Logger
-        getLogger().warning("IamAuth Enabled! - by IamDig_");
-
-        // ArrayLists
-        logged = new ArrayList<>();
-
-        // Config
-        getConfig().options().copyDefaults();
-        saveDefaultConfig();
+    private void init() {
 
         // Listeners
         Bukkit.getPluginManager().registerEvents(new JoinListener(this), this);
@@ -74,10 +72,5 @@ public final class Main extends JavaPlugin {
         getCommand("unregister").setTabCompleter(new UnregisterCompleter());
         getCommand("login").setTabCompleter(new LoginCompleter());
         getCommand("register").setTabCompleter(new RegisterCompleter());
-    }
-
-    @Override
-    public void onDisable() {
-        getLogger().warning("IamAuth Disabled! - by IamDig_");
     }
 }

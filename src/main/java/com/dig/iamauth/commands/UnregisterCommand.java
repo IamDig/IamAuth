@@ -6,7 +6,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+
+import java.io.File;
+import java.io.IOException;
 
 public class UnregisterCommand implements CommandExecutor {
     private Main main;
@@ -17,11 +21,18 @@ public class UnregisterCommand implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (commandSender instanceof Player) {
             Player sender = (Player) commandSender;
+            File file = new File(main.getDataFolder(), "passwords.yml");
+            YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
             if (sender.hasPermission("iamauth.unregister")) {
                 if (args.length == 1) {
                     if (Bukkit.getPlayer(args[0]) != null) {
                         Player target = Bukkit.getPlayer(args[0]);
-                        Main.getRegistered().remove(target.getUniqueId());
+                        modifyFile.set(target.getUniqueId() + " password",null);
+                        try {
+                            modifyFile.save(file);
+                        } catch (IOException e) {
+                            main.getLogger().warning("[IamAuth] It was not possible to save passwords.yml");
+                        }
                         String reason = main.getConfig().getString("unregister-kick-reason");
                         target.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
                         for (String msg : main.getConfig().getStringList("unregister-command-message")) {

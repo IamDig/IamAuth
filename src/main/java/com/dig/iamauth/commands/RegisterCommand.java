@@ -22,7 +22,7 @@ public class RegisterCommand implements CommandExecutor {
             File file = new File(main.getDataFolder(), "passwords.yml");
             YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
             Player sender = (Player) commandSender;
-            if (!Main.getRegistered().contains(sender.getUniqueId())) {
+            if (modifyFile.getString(sender.getUniqueId() + " password") == null) {
                 if (args.length == 2) {
                     String password = args[0];
                     String confirmpassword = args[1];
@@ -33,7 +33,6 @@ public class RegisterCommand implements CommandExecutor {
                         } catch (IOException ex) {
                             main.getLogger().warning("[IamAuth] It was not possible to create passwords.yml file");
                         }
-                        Main.getRegistered().add(sender.getUniqueId());
                         Main.getLogged().add(sender.getUniqueId());
                         for (String msg : main.getConfig().getStringList("register-command-message")) {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));

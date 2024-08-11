@@ -19,8 +19,10 @@ public class JoinListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
+        File file = new File(main.getDataFolder(), "passwords.yml");
+        YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
             if (!Main.getLogged().contains(player.getUniqueId())) {
-                if (Main.getRegistered().contains(player.getUniqueId())) {
+                if (modifyFile.getString(player.getUniqueId() + " password") != null) {
                     for (String msg : main.getConfig().getStringList("login-auth-message")) {
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                     }

@@ -1,63 +1,66 @@
 login-timer: 60 # Seconds
-timer-expired-kick-reason: '&8[&e&l!&8] &cYou took too much time to log in! &8[&e&l!&8]'
+timer-expired-kick-reason: "&8[&e&l!&8] &cYou took too much time to log in! &8[&e&l!&8]"
 register-auth-message:
-  - '&cYou have to register to log into the server!'
-  - '&4&l-> &7Use &c/register [password] [confirmpassword]&7 to register'
+  - "&cYou have to register to log into the server!"
+  - "&4&l-> &7Use &c/register [password] [confirmpassword]&7 to register"
 login-auth-message:
-  - '&cLog into the server with your password!'
-  - '&4&l-> &7Use &c/login [password] &7to log in'
+  - "&cLog into the server with your password!"
+  - "&4&l-> &7Use &c/login [password] &7to log in"
 premium-auth-message:
-  - '&aYou logged in with a &2premium account&a!'
+  - "&aYou logged in with a &2premium account&a!"
 register-command-message:
-  - '&aYou successfully registered your account!'
-  - '&4&l-> &7Change password with &c/changepass [old-pw] [new-pw]'
+  - "&aYou successfully registered your account!"
+  - "&4&l-> &7Change password with &c/changepass [old-pw] [new-pw]"
 login-command-message:
-  - '&aYou successfully logged into the server!'
-  - '&4&l-> &7Change password with &c/changepass [old-pw] [new-pw]'
+  - "&aYou successfully logged into the server!"
+  - "&4&l-> &7Change password with &c/changepass [old-pw] [new-pw]"
 already-registered-message:
-  - '&cYou cannot do that! You are already registered!'
+  - "&cYou cannot do that! You are already registered!"
 already-logged-message:
-  - '&cYou cannot do that! You are already logged in!'
+  - "&cYou cannot do that! You are already logged in!"
 wrong-password-message:
-  - '&8[&e&l!&8] &4Wrong password!'
-  - '&7Try again: &c/login [password]'
+  - "&8[&e&l!&8] &4Wrong password!"
+  - "&7Try again: &c/login [password]"
 different-passwords-message:
-  - '&8[&e&l!&8] &4Different passwords!'
-  - '&7Try again: &c/register [password] [confirmpassword]'
+  - "&8[&e&l!&8] &4Different passwords!"
+  - "&7Try again: &c/register [password] [confirmpassword]"
 invalid-command-usage:
-  - '&cInvalid command usage!'
-  - '&eCorrect usage &8-> &c%usage%'
+  - "&cInvalid command usage!"
+  - "&eCorrect usage &8-> &c%usage%"
 missing-permission-message:
-  - '&cYou do not have permission to execute this command'
-  - '&eRequired permission &8-> %permission%'
+  - "&cYou do not have permission to execute this command"
+  - "&eRequired permission &8-> %permission%"
 player-not-found-message:
-  - '&cPlayer is offline or does not exist.'
-  - '&4-> &7You can see the list of online players by pressing &cTAB &7while typing the command'
-login-command-usage: '/login [password]'
-register-command-usage: '/register [password] [confirmpassword]'
-unregister-command-usage: '/unregister [player]'
-auth-command-usage: '/auth reload, /auth help'
-changepassword-command-usage: '/changepass [old-pw] [new-pw]'
-changepassword-kick-reason: '&aPassword changed! Reconnect to log in with the new password!'
-unregister-kick-reason: '&4You have been unregistered! Reconnect to register again!'
+  - "&cPlayer is offline or does not exist."
+  - "&4-> &7You can see the list of online players by pressing &cTAB &7while typing the command"
+login-command-usage: "/login [password]"
+register-command-usage: "/register [password] [confirmpassword]"
+unregister-command-usage: "/unregister [player]"
+auth-command-usage: "/auth reload, /auth help"
+changepassword-command-usage: "/changepass [old-pw] [new-pw]"
+changepassword-kick-reason: "&aPassword changed! Reconnect to log in with the new password!"
+unregister-kick-reason: "&4You have been unregistered! Reconnect to register again!"
 unregister-command-message:
-  - '&aSuccessfully unregistered %target%!'
-  - '&4-> &7The player now has to register again.'
+  - "&aSuccessfully unregistered %target%!"
+  - "&4-> &7The player now has to register again."
 config-reload-message:
-  - '&aConfiguration file reloaded successfully!'
-  - '&4-> &7Server/plugins/IamAuth/config.yml'
+  - "&aConfiguration file reloaded successfully!"
+  - "&4-> &7Server/plugins/IamAuth/config.yml"
 help-message:
-  - '&lIam&4&lAuth &8- &3&lHelp'
-  - '- &b/register [password] [confirmpassword] &8-> &7Register your account by setting your login password'
-  - '- &b/login [password] &8-> &7Log into the server by using the password you set when registering'
-  - '- &b/changepass [old-pw] [new-pw] &8-> &7Change your login password.'
-  - '- &b/unregister [player] &8-> &7Unregister a player so they can set a new password in case they have lost the old one'
-  - '&eRequires permission &8-> &ciamauth.unregister'
-  - '- &b/auth help &8-> &7Makes you visualize this message'
-  - '&eRequires permission &8-> &ciamauth.help'
-  - '- &b/auth reload &8-> &7 Reload config.yml'
-  - '&eRequires permission &8-> &ciamauth.reloadconfig'
+  - "&lIam&4&lAuth &8- &3&lHelp"
+  - "- &b/register [password] [confirmpassword] &8-> &7Register your account by setting your login password"
+  - "- &b/login [password] &8-> &7Log into the server by using the password you set when registering"
+  - "- &b/changepass [old-pw] [new-pw] &8-> &7Change your login password."
+  - "- &b/unregister [player] &8-> &7Unregister a player so they can set a new password in case they have lost the old one"
+  - "&eRequires permission &8-> &ciamauth.unregister"
+  - "- &b/auth help &8-> &7Makes you visualize this message"
+  - "&eRequires permission &8-> &ciamauth.help"
+  - "- &b/auth reload &8-> &7 Reload config.yml"
+  - "&eRequires permission &8-> &ciamauth.reloadconfig"
 chatting-before-login:
-  - '&cYou have to log into the server to chat!'
-  - '&4-> &7Use &c/register &7 or &c/login&7'
+  - "&cYou have to log into the server to chat!"
+  - "&4-> &7Use &c/register &7 or &c/login"
+command-before-login:
+  - "&cYou have to log into the server to use this command!"
+  - "&4-> &7Use &c/register &7 or &c/login"
 

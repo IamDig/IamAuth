@@ -23,7 +23,7 @@ public class ChangepasswordCommand implements CommandExecutor {
             File file = new File(main.getDataFolder(), "passwords.yml");
             YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
             Player sender = (Player) commandSender;
-            if (Main.getRegistered().contains(sender.getUniqueId())) {
+            if (modifyFile.getString(sender.getUniqueId() + " password") != null) {
                 if (Main.getLogged().contains(sender.getUniqueId())) {
                     if (args.length == 2) {
                         if (args[0].equals(modifyFile.getString(sender.getUniqueId() + " password"))) {

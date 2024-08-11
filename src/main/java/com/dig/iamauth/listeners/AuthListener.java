@@ -9,6 +9,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByBlockEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -47,8 +48,8 @@ public class AuthListener implements Listener {
         }
     }
     @EventHandler
-    public void onInv(InventoryOpenEvent e) {
-        Player p = (Player) e.getPlayer();
+    public void onInv(InventoryClickEvent e) {
+        Player p = (Player) e.getWhoClicked();
         if (!Main.getLogged().contains(p.getUniqueId())) {
             e.setCancelled(true);
         }

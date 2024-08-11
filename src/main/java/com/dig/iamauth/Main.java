@@ -2,6 +2,7 @@ package com.dig.iamauth;
 
 import com.dig.iamauth.commands.*;
 import com.dig.iamauth.listeners.*;
+import com.dig.iamauth.tabcompleters.*;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
@@ -68,6 +69,11 @@ public final class Main extends JavaPlugin {
         getCommand("auth").setExecutor(new AuthCommand(this));
 
         // Tab Completers
+        getCommand("auth").setTabCompleter(new AuthCompleter());
+        getCommand("changepass").setTabCompleter(new ChangepasswordCompleter());
+        getCommand("unregister").setTabCompleter(new UnregisterCompleter());
+        getCommand("login").setTabCompleter(new LoginCompleter());
+        getCommand("register").setTabCompleter(new RegisterCompleter());
     }
 
     @Override

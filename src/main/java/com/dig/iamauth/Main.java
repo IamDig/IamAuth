@@ -34,11 +34,8 @@ public final class Main extends JavaPlugin {
         getLogger().warning("<------------------------>");
 
         logged = new ArrayList<>();
-
         saveDefaultConfig();
-
         init();
-
         initPasswordFile();
 
     }

@@ -16,7 +16,6 @@ public class UnregisterCompleter implements TabCompleter {
         if (args.length == 1) {
             List<String> names = new ArrayList<>();
             for (Player p : Bukkit.getOnlinePlayers()) names.add(p.getName());
-
             return StringUtil.copyPartialMatches(args[0], names, new ArrayList<>());
         }
         return new ArrayList<>();

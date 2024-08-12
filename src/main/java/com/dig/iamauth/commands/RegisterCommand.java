@@ -34,13 +34,9 @@ public class RegisterCommand implements CommandExecutor {
                             main.getLogger().warning("[IamAuth] It was not possible to create passwords.yml file");
                         }
                         Main.getLogged().add(sender.getUniqueId());
-                        for (String msg : main.getConfig().getStringList("register-command-message")) {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-                        }
+                        for (String msg : main.getConfig().getStringList("register-command-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                     } else {
-                        for (String msg : main.getConfig().getStringList("different-passwords-message")) {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-                        }
+                        for (String msg : main.getConfig().getStringList("different-passwords-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                     }
                 } else {
                     for (String msg : main.getConfig().getStringList("invalid-command-usage")) {
@@ -49,9 +45,7 @@ public class RegisterCommand implements CommandExecutor {
                     }
                 }
             } else {
-                for (String msg : main.getConfig().getStringList("already-registered-message")) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-                }
+                for (String msg : main.getConfig().getStringList("already-registered-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
             }
         }
         return false;

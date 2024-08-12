@@ -19,9 +19,7 @@ public class ChatListener implements Listener {
         Player player = e.getPlayer();
         if (!Main.getLogged().contains(player.getUniqueId())) {
             e.setCancelled(true);
-            for (String msg : main.getConfig().getStringList("chatting-before-login-message")) {
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-            }
+            for (String msg : main.getConfig().getStringList("chatting-before-login-message")) player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
         }
     }
 }

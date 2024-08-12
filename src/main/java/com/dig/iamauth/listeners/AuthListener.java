@@ -21,37 +21,26 @@ public class AuthListener implements Listener {
         Player p = e.getPlayer();
         Location f = e.getFrom();
         Location t = e.getTo();
-        if (!Main.getLogged().contains(p.getUniqueId())) {
-            if (f.getBlockX() != t.getBlockX() || f.getBlockY() != t.getBlockY() || f.getBlockZ() != t.getBlockZ()) {
-                p.teleport(f);
-            }
-        }
+        if (!Main.getLogged().contains(p.getUniqueId())) if (f.getBlockX() != t.getBlockX() || f.getBlockY() != t.getBlockY() || f.getBlockZ() != t.getBlockZ()) p.teleport(f);
     }
     @EventHandler
     public void onBreak(BlockBreakEvent e) {
         Player p = e.getPlayer();
-        if (!Main.getLogged().contains(p.getUniqueId())) {
-            e.setCancelled(true);
-        }
+        if (!Main.getLogged().contains(p.getUniqueId())) e.setCancelled(true);
     }
     @EventHandler
     public void onPlace(BlockPlaceEvent e) {
         Player p = e.getPlayer();
-        if (!Main.getLogged().contains(p.getUniqueId())) {
-            e.setCancelled(true);
-        }
+        if (!Main.getLogged().contains(p.getUniqueId())) e.setCancelled(true);
     }
     @EventHandler
     public void onDrop(PlayerDropItemEvent e) {
-        if (!Main.getLogged().contains(e.getPlayer().getUniqueId())) {
-            e.setCancelled(true);
-        }
+        Player p = e.getPlayer();
+        if (!Main.getLogged().contains(p.getUniqueId())) e.setCancelled(true);
     }
     @EventHandler
     public void onInv(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
-        if (!Main.getLogged().contains(p.getUniqueId())) {
-            e.setCancelled(true);
-        }
+        if (!Main.getLogged().contains(p.getUniqueId())) e.setCancelled(true);
     }
 }

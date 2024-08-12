@@ -10,8 +10,6 @@ public class QuitListener implements Listener {
     @EventHandler
     public  void onQuit(PlayerQuitEvent e) {
         Player player = e.getPlayer();
-        if (Main.getLogged().contains(player.getUniqueId())) {
-            Main.getLogged().remove(player.getUniqueId());
-        }
+        if (Main.getLogged().contains(player.getUniqueId())) Main.getLogged().remove(player.getUniqueId());
     }
 }

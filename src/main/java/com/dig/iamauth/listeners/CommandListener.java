@@ -30,9 +30,7 @@ public class CommandListener implements Listener {
                 }
             }
             if (!allowedCommandFound) {
-                for (String msg : main.getConfig().getStringList("command-before-login-message")) {
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-                }
+                for (String msg : main.getConfig().getStringList("command-before-login-message")) player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                 e.setCancelled(true);
             }
         }

@@ -22,14 +22,8 @@ public class JoinListener implements Listener {
         File file = new File(main.getDataFolder(), "passwords.yml");
         YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
             if (!Main.getLogged().contains(player.getUniqueId())) {
-                if (modifyFile.getString(player.getUniqueId() + " password") != null) {
-                    for (String msg : main.getConfig().getStringList("login-auth-message")) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-                    }
-                } else {
-                    for (String msg : main.getConfig().getStringList("register-auth-message")) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-                    }
+                if (modifyFile.getString(player.getUniqueId() + " password") != null) for (String msg : main.getConfig().getStringList("login-auth-message")) player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));else {
+                    if (modifyFile.getString(player.getUniqueId() + " password") == null) for (String msg : main.getConfig().getStringList("register-auth-message")) player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                 }
             }
         int timer = main.getConfig().getInt("login-timer") * 20;

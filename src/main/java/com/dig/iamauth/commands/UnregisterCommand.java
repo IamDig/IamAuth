@@ -39,11 +39,7 @@ public class UnregisterCommand implements CommandExecutor {
                             msg = msg.replace("%sender%", sender.getName());
                             msg = msg.replace("%target%", target.getName());
                         }
-                    } else {
-                        for (String msg : main.getConfig().getStringList("player-not-found-message")) {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-                        }
-                    }
+                    } else for (String msg : main.getConfig().getStringList("player-not-found-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                 } else {
                     for (String msg : main.getConfig().getStringList("invalid-command-usage")) {
                         msg = msg.replace("%usage%", main.getConfig().getString("unregister-command-usage"));

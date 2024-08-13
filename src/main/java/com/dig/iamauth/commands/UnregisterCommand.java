@@ -38,6 +38,7 @@ public class UnregisterCommand implements CommandExecutor {
                         for (String msg : main.getConfig().getStringList("unregister-command-message")) {
                             msg = msg.replace("%sender%", sender.getName());
                             msg = msg.replace("%target%", target.getName());
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                         }
                     } else for (String msg : main.getConfig().getStringList("player-not-found-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                 } else {
@@ -52,6 +53,23 @@ public class UnregisterCommand implements CommandExecutor {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                 }
             }
+        } else {
+            File file = new File(main.getDataFolder(), "passwords.yml");
+            YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
+            if (args.length == 1) {
+                if (Bukkit.getPlayer(args[0]) != null) {
+                    Player target = Bukkit.getPlayer(args[0]);
+                    modifyFile.set(target.getUniqueId() + " password", null);
+                    try {
+                        modifyFile.save(file);
+                    } catch (IOException e) {
+                        main.getLogger().warning("[IamAuth] It was not possible to save passwords.yml");
+                    }
+                    String reason = main.getConfig().getString("unregister-kick-reason");
+                    target.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
+                    main.getLogger().warning("[IamAuth] " + target.getName() + " has been unregistered.");
+                } else main.getLogger().warning("[IamAuth] Player does not exist or is offline");
+            } else main.getLogger().warning("[IamAuth] Invalid command usage. Correct one is: /unregister [player]");
         }
         return false;
     }

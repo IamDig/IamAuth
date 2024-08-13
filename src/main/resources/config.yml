@@ -27,6 +27,8 @@ already-logged-message:
 wrong-password-message:
   - "&8[&e&l!&8] &4Wrong password!"
   - "&7Try again: &c/login [password]"
+kick-if-password-wrong: false
+wrong-password-kick-reason: "&8[&e&l!&8] &4Wrong password! Reconnect to try again! &8[&e&l!&8]"
 different-passwords-message:
   - "&8[&e&l!&8] &4Different passwords!"
   - "&7Try again: &c/register [password] [confirmpassword]"

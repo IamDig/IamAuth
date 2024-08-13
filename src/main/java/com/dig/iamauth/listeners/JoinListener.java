@@ -26,6 +26,24 @@ public class JoinListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
-
+        login(player);
     }
+
+    private void login(Player player) {
+        File file = new File(main.getDataFolder(), "passwords.yml");
+        YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
+        if (!Main.getLogged().contains(player.getUniqueId())) {
+            if (modifyFile.getString(player.getUniqueId() + " password") != null)
+                for (String msg : main.getConfig().getStringList("login-auth-message")) player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+            else for (String msg : main.getConfig().getStringList("register-auth-message")) player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+        }
+        int timer = main.getConfig().getInt("login-timer") * 20;
+        Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
+            if (!Main.getLogged().contains(player.getUniqueId())) {
+                String reason = main.getConfig().getString("timer-expired-kick-reason");
+                player.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
+            }
+        }, timer);
+    }
+
 }

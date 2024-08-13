@@ -23,7 +23,7 @@ public class AuthCommand implements CommandExecutor {
                         Player sender = (Player) commandSender;
                         if (sender.hasPermission("iamauth.reloadconfig")) {
                             main.reloadConfig();
-                            main.getLogger().warning("[IamAuth] Config Reloaded");
+                            main.getLogger().warning("Config Reloaded");
                             for (String msg : main.getConfig().getStringList("config-reload-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
 
                         } else {
@@ -34,7 +34,7 @@ public class AuthCommand implements CommandExecutor {
                         }
                     } else {
                         main.reloadConfig();
-                        main.getLogger().warning("[IamAuth] Config Reloaded");
+                        main.getLogger().warning("Config Reloaded");
                     }
                     break;
 

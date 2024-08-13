@@ -30,7 +30,7 @@ public class ChangepasswordCommand implements CommandExecutor {
                     try {
                         modifyFile.save(file);
                     } catch (IOException ex) {
-                        main.getLogger().warning("[IamAuth] It was not possible to create passwords.yml file");
+                        main.getLogger().warning("It was not possible to create passwords.yml file");
                     }
                     String reason = main.getConfig().getString("changepassword-kick-reason");
                     sender.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));

@@ -14,7 +14,7 @@ IamAuth is a simple 1.8.9+ Authentication plugin made by @IamDig (me) with some 
 - ```/auth reload```
 - ```/auth help```
 
-# Permissions
+## Permissions
 - ```iamauth.unregister: required to use the /unregister command```
 - ```iamauth.reloadconfig: required to use /auth reload```
 - ```iamauth.help: required to use /auth help```

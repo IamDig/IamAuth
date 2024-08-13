@@ -21,10 +21,10 @@ IamAuth is a simple 1.8.9+ Authentication plugin made by @IamDig (me) with some 
 
 # Configuration file
 ```yml
-# ---    /\    |\  /|    /\    |   | ----- |   |
-#  |    /  \   | \/ |   /  \   |   |   |   |---|
-#  |   /----\  |    |  /----\  |   |   |   |   |
-# --- /      \ |    | /      \ |___|   |   |   |
+#   ---    /\    |\  /|    /\    |   | ----- |   |
+#    |    /  \   | \/ |   /  \   |   |   |   |---|
+#    |   /----\  |    |  /----\  |   |   |   |   |
+#   --- /      \ |    | /      \ |___|   |   |   |
 
 
 login-timer: 60 # Seconds

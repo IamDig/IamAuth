@@ -94,4 +94,4 @@ command-before-login-message:
   - "&4-> &7Use &c/register &7 or &c/login"
 accepted-commands-before-login:
   - "/login"
-  - "/register"```
+  - "/register"

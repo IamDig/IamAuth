@@ -2,10 +2,8 @@ package com.dig.iamauth;
 
 import com.dig.iamauth.commands.*;
 import com.dig.iamauth.listeners.*;
-import com.dig.iamauth.tabcompleters.*;
+import com.dig.iamauth.commands.tabcompleters.*;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;

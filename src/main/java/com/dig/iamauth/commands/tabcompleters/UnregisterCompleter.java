@@ -1,4 +1,4 @@
-package com.dig.iamauth.tabcompleters;
+package com.dig.iamauth.commands.tabcompleters;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;

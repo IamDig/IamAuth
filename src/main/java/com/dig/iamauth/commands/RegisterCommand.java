@@ -31,7 +31,7 @@ public class RegisterCommand implements CommandExecutor {
                         try {
                             modifyFile.save(file);
                         } catch (IOException ex) {
-                            main.getLogger().warning("[IamAuth] It was not possible to create passwords.yml file");
+                            main.getLogger().warning("It was not possible to create passwords.yml file");
                         }
                         Main.getLogged().add(sender.getUniqueId());
                         for (String msg : main.getConfig().getStringList("register-command-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));

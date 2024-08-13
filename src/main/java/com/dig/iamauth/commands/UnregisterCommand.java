@@ -31,7 +31,7 @@ public class UnregisterCommand implements CommandExecutor {
                         try {
                             modifyFile.save(file);
                         } catch (IOException e) {
-                            main.getLogger().warning("[IamAuth] It was not possible to save passwords.yml");
+                            main.getLogger().warning("It was not possible to save passwords.yml");
                         }
                         String reason = main.getConfig().getString("unregister-kick-reason");
                         target.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
@@ -63,13 +63,13 @@ public class UnregisterCommand implements CommandExecutor {
                     try {
                         modifyFile.save(file);
                     } catch (IOException e) {
-                        main.getLogger().warning("[IamAuth] It was not possible to save passwords.yml");
+                        main.getLogger().warning("It was not possible to save passwords.yml");
                     }
                     String reason = main.getConfig().getString("unregister-kick-reason");
                     target.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
-                    main.getLogger().warning("[IamAuth] " + target.getName() + " has been unregistered.");
-                } else main.getLogger().warning("[IamAuth] Player does not exist or is offline");
-            } else main.getLogger().warning("[IamAuth] Invalid command usage. Correct one is: /unregister [player]");
+                    main.getLogger().warning( target.getName() + " has been unregistered.");
+                } else main.getLogger().warning("Player does not exist or is offline");
+            } else main.getLogger().warning("Invalid command usage. Correct one is: /unregister [player]");
         }
         return false;
     }

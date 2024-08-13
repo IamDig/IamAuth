@@ -46,7 +46,7 @@ public final class Main extends JavaPlugin {
             try {
                 file.createNewFile();
             } catch (IOException ex) {
-                getLogger().warning("[IamAuth] It was not possible to create passwords.yml file");
+                getLogger().warning("It was not possible to create passwords.yml file");
             }
         }
     }

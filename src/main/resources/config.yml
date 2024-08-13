@@ -1,3 +1,9 @@
+# ---    /\    |\  /|    /\    |   | ----- |   |
+#  |    /  \   | \/ |   /  \   |   |   |   |---|
+#  |   /----\  |    |  /----\  |   |   |   |   |
+# --- /      \ |    | /      \ |___|   |   |   |
+
+
 login-timer: 60 # Seconds
 timer-expired-kick-reason: "&8[&e&l!&8] &cYou took too much time to log in! &8[&e&l!&8]"
 register-auth-message:

@@ -24,10 +24,8 @@ public class AuthCommand implements CommandExecutor {
                         if (sender.hasPermission("iamauth.reloadconfig")) {
                             main.reloadConfig();
                             main.getLogger().warning("[IamAuth] Config Reloaded");
-                            for (String msg : main.getConfig().getStringList("config-reload-message")) {
-                                msg = msg.replace("Server", Bukkit.getServerName());
-                                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-                            }
+                            for (String msg : main.getConfig().getStringList("config-reload-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+
                         } else {
                             for (String msg : main.getConfig().getStringList("missing-permission-message")) {
                                 msg = msg.replace("%permission%", "iamauth.reloadconfig");

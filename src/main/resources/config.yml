@@ -8,18 +8,18 @@ login-timer: 60 # Seconds
 timer-expired-kick-reason: "&8[&e&l!&8] &cYou took too much time to log in! &8[&e&l!&8]"
 register-auth-message:
   - "&cYou have to register to log into the server!"
-  - "&4&l-> &7Use &c/register [password] [confirmpassword]&7 to register"
+  - "&4-> &7Use &c/register [password] [confirmpassword]&7 to register"
 login-auth-message:
   - "&cLog into the server with your password!"
-  - "&4&l-> &7Use &c/login [password] &7to log in"
+  - "&4-> &7Use &c/login [password] &7to log in"
 premium-auth-message:
   - "&aYou logged in with a &2premium account&a!"
 register-command-message:
   - "&aYou successfully registered your account!"
-  - "&4&l-> &7Change password with &c/changepass [old-pw] [new-pw]"
+  - "&4-> &7Change password with &c/changepass [old-pw] [new-pw]"
 login-command-message:
   - "&aYou successfully logged into the server!"
-  - "&4&l-> &7Change password with &c/changepass [old-pw] [new-pw]"
+  - "&4-> &7Change password with &c/changepass [old-pw] [new-pw]"
 already-registered-message:
   - "&cYou cannot do that! You are already registered!"
 already-logged-message:

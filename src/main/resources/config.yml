@@ -6,6 +6,8 @@
 
 login-timer: 60 # Seconds
 timer-expired-kick-reason: "&8[&e&l!&8] &cYou took too much time to log in! &8[&e&l!&8]"
+premium-welcome-message:
+  - "&aYou logged with a premium account!"
 register-auth-message:
   - "&cYou have to register to log into the server!"
   - "&4-> &7Use &c/register [password] [confirmpassword]&7 to register"

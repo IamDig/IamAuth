@@ -9,11 +9,16 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class AuthCommand implements CommandExecutor {
     private Main main;
+
     public AuthCommand(Main main) {
         this.main = main;
     }
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (args.length == 1) {
@@ -24,7 +29,8 @@ public class AuthCommand implements CommandExecutor {
                         if (sender.hasPermission("iamauth.reloadconfig")) {
                             main.reloadConfig();
                             main.getLogger().warning("Config Reloaded");
-                            for (String msg : main.getConfig().getStringList("config-reload-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+                            for (String msg : main.getConfig().getStringList("config-reload-message"))
+                                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
 
                         } else {
                             for (String msg : main.getConfig().getStringList("missing-permission-message")) {
@@ -42,7 +48,8 @@ public class AuthCommand implements CommandExecutor {
                     if (commandSender instanceof Player) {
                         Player sender = (Player) commandSender;
                         if (sender.hasPermission("iamauth.help")) {
-                            for (String msg : main.getConfig().getStringList("help-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+                            for (String msg : main.getConfig().getStringList("help-message"))
+                                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                         } else {
                             for (String msg : main.getConfig().getStringList("missing-permission-message")) {
                                 msg = msg.replace("%permission%", "iamauth.help");

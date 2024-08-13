@@ -35,7 +35,7 @@ invalid-command-usage:
   - "&eCorrect usage &8-> &c%usage%"
 missing-permission-message:
   - "&cYou do not have permission to execute this command"
-  - "&eRequired permission &8-> %permission%"
+  - "&eRequired permission &8-> &7%permission%"
 player-not-found-message:
   - "&cPlayer is offline or does not exist."
   - "&4-> &7You can see the list of online players by pressing &cTAB &7while typing the command"

@@ -49,6 +49,9 @@ unregister-command-usage: "/unregister [player]"
 auth-command-usage: "/auth reload, /auth help"
 changepassword-command-usage: "/changepass [old-pw] [new-pw]"
 changepassword-kick-reason: "&aPassword changed! Reconnect to log in with the new password!"
+newpassword-equal-to-oldpassword-message:
+  - "&cNew password is equal to old password"
+  - "&4-> &7Try again: &c/changepass [old-pw] [new-pw]"
 unregister-kick-reason: "&4You have been unregistered! Reconnect to register again!"
 unregister-command-message:
   - "&aSuccessfully unregistered %target%!"

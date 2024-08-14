@@ -25,15 +25,18 @@ public class ChangepasswordCommand implements CommandExecutor {
             Player sender = (Player) commandSender;
             if (args.length == 2) {
                 if (args[0].equals(modifyFile.getString(sender.getUniqueId() + " password"))) {
+                    String oldpass = args[0];
                     String newpass = args[1];
-                    modifyFile.set(sender.getUniqueId() + " password", newpass);
-                    try {
-                        modifyFile.save(file);
-                    } catch (IOException ex) {
-                        main.getLogger().warning("It was not possible to create passwords.yml file");
-                    }
-                    String reason = main.getConfig().getString("changepassword-kick-reason");
-                    sender.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
+                    if (newpass != oldpass) {
+                        modifyFile.set(sender.getUniqueId() + " password", newpass);
+                        try {
+                            modifyFile.save(file);
+                        } catch (IOException ex) {
+                            main.getLogger().warning("It was not possible to save passwords.yml file");
+                        }
+                        String reason = main.getConfig().getString("changepassword-kick-reason");
+                        sender.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
+                    } else for (String msg : main.getConfig().getStringList("newpassword-equal-to-oldpassword-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                 }
             } else {
                 for (String msg : main.getConfig().getStringList("invalid-command-usage")) {

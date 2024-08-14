@@ -1,5 +1,5 @@
 name: IamAuth
-version: 1.0.1
+version: '${project.version}'
 main: com.dig.iamauth.Main
 commands:
   register:

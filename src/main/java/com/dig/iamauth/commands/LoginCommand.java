@@ -28,7 +28,6 @@ public class LoginCommand implements CommandExecutor {
                     if (args.length == 1) {
                         if (args[0].equals(modifyFile.getString(sender.getUniqueId() + " password"))) {
                             Main.getLogged().add(sender.getUniqueId());
-                            sender.teleport(sender.getBedSpawnLocation());
                             for (String msg : main.getConfig().getStringList("login-command-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                         } else {
                             if (main.getConfig().getBoolean("kick-if-password-wrong")) {

@@ -34,7 +34,6 @@ public class RegisterCommand implements CommandExecutor {
                             main.getLogger().warning("It was not possible to create passwords.yml file");
                         }
                         Main.getLogged().add(sender.getUniqueId());
-                        sender.teleport(sender.getBedSpawnLocation());
                         for (String msg : main.getConfig().getStringList("register-command-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                     } else for (String msg : main.getConfig().getStringList("different-passwords-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                 } else {

@@ -11,3 +11,8 @@ commands:
   auth:
     aliases:
       - iamauth
+  setauth:
+    aliases:
+      - setauthlocation
+      - setauthloc
+      - setauthspawn

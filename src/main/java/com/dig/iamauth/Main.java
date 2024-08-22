@@ -4,6 +4,7 @@ import com.dig.iamauth.commands.*;
 import com.dig.iamauth.listeners.*;
 import com.dig.iamauth.commands.tabcompleters.*;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -20,6 +21,11 @@ public final class Main extends JavaPlugin {
 
     public static Main getInstance() {
         return getPlugin(Main.class);
+    }
+
+    private static Location authLocation;
+    public static Location getAuthLocation() {
+        return authLocation;
     }
 
     @Override
@@ -64,6 +70,7 @@ public final class Main extends JavaPlugin {
         getCommand("changepassword").setExecutor(new ChangepasswordCommand(this));
         getCommand("unregister").setExecutor(new UnregisterCommand(this));
         getCommand("auth").setExecutor(new AuthCommand(this));
+        getCommand("setauth").setExecutor(new SetAuthLocation(this));
 
         // Tab Completers
         getCommand("auth").setTabCompleter(new AuthCompleter());

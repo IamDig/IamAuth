@@ -23,11 +23,6 @@ public final class Main extends JavaPlugin {
         return getPlugin(Main.class);
     }
 
-    private static Location authLocation;
-    public static Location getAuthLocation() {
-        return authLocation;
-    }
-
     @Override
     public void onEnable() {
 
@@ -70,7 +65,6 @@ public final class Main extends JavaPlugin {
         getCommand("changepassword").setExecutor(new ChangepasswordCommand(this));
         getCommand("unregister").setExecutor(new UnregisterCommand(this));
         getCommand("auth").setExecutor(new AuthCommand(this));
-        getCommand("setauth").setExecutor(new SetAuthLocation(this));
 
         // Tab Completers
         getCommand("auth").setTabCompleter(new AuthCompleter());

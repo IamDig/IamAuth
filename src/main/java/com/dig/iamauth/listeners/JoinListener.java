@@ -33,7 +33,6 @@ public class JoinListener implements Listener {
         File file = new File(main.getDataFolder(), "passwords.yml");
         YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
         if (!Main.getLogged().contains(player.getUniqueId())) {
-            if (Main.getAuthLocation() != null) player.teleport(Main.getAuthLocation());
             if (modifyFile.getString(player.getUniqueId() + " password") != null)
                 for (String msg : main.getConfig().getStringList("login-auth-message")) player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
             else for (String msg : main.getConfig().getStringList("register-auth-message")) player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));

@@ -79,5 +79,3 @@ command-before-login-message:
 accepted-commands-before-login:
   - "/login"
   - "/register"
-set-auth-location-message:
-  - "&aSuccessfully set auth spawn location! &8(&6%x%&7, &6%y%&7, &6%z%&8)"

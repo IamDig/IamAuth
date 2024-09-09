@@ -23,9 +23,7 @@ public class CommandListener implements Listener {
         Player player = e.getPlayer();
         if (!Main.getLogged().contains(player.getUniqueId())) {
             boolean allowedCommandFound = false;
-            for (String str : main.getConfig().getStringList("accepted-commands-before-login")) {
-                if (command.contains(str)) allowedCommandFound = true;
-            }
+            for (String str : main.getConfig().getStringList("accepted-commands-before-login")) if (command.contains(str)) allowedCommandFound = true;
             if (!allowedCommandFound) {
                 for (String msg : main.getConfig().getStringList("command-before-login-message")) player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                 e.setCancelled(true);

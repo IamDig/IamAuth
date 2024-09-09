@@ -48,8 +48,7 @@ public class AuthCommand implements CommandExecutor {
                     if (commandSender instanceof Player) {
                         Player sender = (Player) commandSender;
                         if (sender.hasPermission("iamauth.help")) {
-                            for (String msg : main.getConfig().getStringList("help-message"))
-                                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+                            for (String msg : main.getConfig().getStringList("help-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                         } else {
                             for (String msg : main.getConfig().getStringList("missing-permission-message")) {
                                 msg = msg.replace("%permission%", "iamauth.help");

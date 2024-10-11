@@ -3,6 +3,7 @@ package com.dig.iamauth;
 import com.dig.iamauth.commands.*;
 import com.dig.iamauth.listeners.*;
 import com.dig.iamauth.commands.tabcompleters.*;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -14,14 +15,10 @@ import java.util.List;
 import java.util.UUID;
 
 public final class Main extends JavaPlugin {
+    @Getter
     private static List<UUID> logged;
-    public static List<UUID> getLogged() {
-        return logged;
-    }
-
-    public static Main getInstance() {
-        return getPlugin(Main.class);
-    }
+    @Getter
+    private static Main instance;
 
     @Override
     public void onEnable() {

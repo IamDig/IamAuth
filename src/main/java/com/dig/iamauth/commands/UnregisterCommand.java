@@ -13,20 +13,20 @@ import java.io.File;
 import java.io.IOException;
 
 public class UnregisterCommand implements CommandExecutor {
+    Player target;
+    Player sender;
     private Main main;
-    public UnregisterCommand(Main main) {
-        this.main = main;
-    }
+    public UnregisterCommand(Main main) { this.main = main; }
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (commandSender instanceof Player) {
-            Player sender = (Player) commandSender;
+            sender = (Player) commandSender;
             File file = new File(main.getDataFolder(), "passwords.yml");
             YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
             if (sender.hasPermission("iamauth.unregister")) {
                 if (args.length == 1) {
                     if (Bukkit.getPlayer(args[0]) != null) {
-                        Player target = Bukkit.getPlayer(args[0]);
+                        target = Bukkit.getPlayer(args[0]);
                         modifyFile.set(target.getUniqueId() + " password",null);
                         try {
                             modifyFile.save(file);
@@ -58,7 +58,7 @@ public class UnregisterCommand implements CommandExecutor {
             YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
             if (args.length == 1) {
                 if (Bukkit.getPlayer(args[0]) != null) {
-                    Player target = Bukkit.getPlayer(args[0]);
+                    target = Bukkit.getPlayer(args[0]);
                     modifyFile.set(target.getUniqueId() + " password", null);
                     try {
                         modifyFile.save(file);

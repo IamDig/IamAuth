@@ -16,27 +16,25 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class JoinListener implements Listener {
-
+    Player player;
     private Main main;
-
-    public JoinListener(Main main) {
-        this.main = main;
-    }
+    public JoinListener(Main main) { this.main = main; }
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        Player player = e.getPlayer();
+        player = e.getPlayer();
         login(player);
     }
 
     private void login(Player player) {
         File file = new File(main.getDataFolder(), "passwords.yml");
         YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
-        if (!Main.getLogged().contains(player.getUniqueId())) {
+        if (!Main.getLogged().contains(player.getUniqueId()))
             if (modifyFile.getString(player.getUniqueId() + " password") != null)
-                for (String msg : main.getConfig().getStringList("login-auth-message")) player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-            else for (String msg : main.getConfig().getStringList("register-auth-message")) player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-        }
+                for (String msg : main.getConfig().getStringList("login-auth-message"))
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+            else for (String msg : main.getConfig().getStringList("register-auth-message"))
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
         int timer = main.getConfig().getInt("login-timer") * 20;
         Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
             if (!Main.getLogged().contains(player.getUniqueId())) {

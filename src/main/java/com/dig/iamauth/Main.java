@@ -24,32 +24,34 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        init();
+    }
 
+    private void initPasswordFile() {
+        File file = new File(getDataFolder(), "passwords.yml");
+        if (!file.exists())
+            try {
+                file.createNewFile();
+            } catch (IOException ex) {
+                getLogger().warning("It was not possible to create passwords.yml file");
+            }
+    }
+
+    private void init() {
+
+        // Arrays
+        logged = new ArrayList<>();
+
+        // Logger
         getLogger().warning("<------------------------>");
         getLogger().warning("     IamAuth: Enabled     ");
         getLogger().warning("                          ");
         getLogger().warning("        By IamDig_        ");
         getLogger().warning("<------------------------>");
 
-        logged = new ArrayList<>();
+        // Files
         saveDefaultConfig();
-        init();
         initPasswordFile();
-
-    }
-
-    private void initPasswordFile() {
-        File file = new File(getDataFolder(), "passwords.yml");
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException ex) {
-                getLogger().warning("It was not possible to create passwords.yml file");
-            }
-        }
-    }
-
-    private void init() {
 
         // Listeners
         Bukkit.getPluginManager().registerEvents(new JoinListener(this), this);

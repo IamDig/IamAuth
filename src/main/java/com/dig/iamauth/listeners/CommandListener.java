@@ -11,23 +11,23 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import java.util.List;
 
 public class CommandListener implements Listener {
-    Player player;
-    String command;
     private Main main;
-    public CommandListener(Main main) { this.main = main; }
+
+    public CommandListener(Main main) {
+        this.main = main;
+    }
 
     @EventHandler
     public void onCommandPreprocess(PlayerCommandPreprocessEvent e) {
-        command = e.getMessage().toLowerCase();
-        player = e.getPlayer();
+        String command = e.getMessage().toLowerCase();
+        Player player = e.getPlayer();
         if (!Main.getLogged().contains(player.getUniqueId())) {
             boolean allowedCommandFound = false;
-            for (String str : main.getConfig().getStringList("accepted-commands-before-login"))
-                if (command.contains(str))
-                    allowedCommandFound = true;
+            for (String str : main.getConfig().getStringList("accepted-commands-before-login")) {
+                if (command.contains(str)) allowedCommandFound = true;
+            }
             if (!allowedCommandFound) {
-                for (String msg : main.getConfig().getStringList("command-before-login-message"))
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+                for (String msg : main.getConfig().getStringList("command-before-login-message")) player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                 e.setCancelled(true);
             }
         }

@@ -1,50 +1,66 @@
 package com.dig.iamauth.commands;
 
 import com.dig.iamauth.Main;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.block.CommandBlock;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class AuthCommand implements CommandExecutor {
-    Player sender;
     private Main main;
-    public AuthCommand(Main main) { this.main = main; }
+
+    public AuthCommand(Main main) {
+        this.main = main;
+    }
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (args.length == 1) {
             switch (args[0]) {
                 case "reload":
                     if (commandSender instanceof Player) {
-                        sender = (Player) commandSender;
+                        Player sender = (Player) commandSender;
                         if (sender.hasPermission("iamauth.reloadconfig")) {
-                            reloadConfig();
+                            main.reloadConfig();
+                            main.getLogger().warning("Config Reloaded");
                             for (String msg : main.getConfig().getStringList("config-reload-message"))
                                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+
                         } else {
                             for (String msg : main.getConfig().getStringList("missing-permission-message")) {
                                 msg = msg.replace("%permission%", "iamauth.reloadconfig");
                                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
                             }
                         }
-                    } else reloadConfig();
+                    } else {
+                        main.reloadConfig();
+                        main.getLogger().warning("Config Reloaded");
+                    }
                     break;
+
                 case "help":
                     if (commandSender instanceof Player) {
-                        sender = (Player) commandSender;
-                        if (sender.hasPermission("iamauth.help"))
+                        Player sender = (Player) commandSender;
+                        if (sender.hasPermission("iamauth.help")) {
                             for (String msg : main.getConfig().getStringList("help-message"))
                                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-                        else for (String msg : main.getConfig().getStringList("missing-permission-message")) {
-                            msg = msg.replace("%permission%", "iamauth.help");
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+                        } else {
+                            for (String msg : main.getConfig().getStringList("missing-permission-message")) {
+                                msg = msg.replace("%permission%", "iamauth.help");
+                                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+                            }
                         }
                     }
                     break;
                 default:
                     if (commandSender instanceof Player) {
-                        sender = (Player) commandSender;
+                        Player sender = (Player) commandSender;
                         for (String msg : main.getConfig().getStringList("invalid-command-usage")) {
                             msg = msg.replace("%usage%", main.getConfig().getString("auth-command-usage"));
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
@@ -53,7 +69,7 @@ public class AuthCommand implements CommandExecutor {
             }
         } else {
             if (commandSender instanceof Player) {
-                sender = (Player) commandSender;
+                Player sender = (Player) commandSender;
                 for (String msg : main.getConfig().getStringList("invalid-command-usage")) {
                     msg = msg.replace("%usage%", main.getConfig().getString("auth-command-usage"));
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
@@ -61,10 +77,5 @@ public class AuthCommand implements CommandExecutor {
             }
         }
         return false;
-    }
-
-    void reloadConfig() {
-        main.reloadConfig();
-        main.getLogger().warning("Config Reloaded");
     }
 }

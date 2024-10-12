@@ -16,7 +16,6 @@ public class ChangepasswordCompleter implements TabCompleter {
             return StringUtil.copyPartialMatches(args[0], Arrays.asList("oldpassword"), new ArrayList<>());
         if (args.length == 2)
             return StringUtil.copyPartialMatches(args[1], Arrays.asList("newpassword"), new ArrayList<>());
-
         return new ArrayList<>();
     }
 }

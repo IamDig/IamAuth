@@ -16,7 +16,6 @@ public class RegisterCompleter implements TabCompleter {
             return StringUtil.copyPartialMatches(args[0], Arrays.asList("password"), new ArrayList<>());
         if (args.length == 2)
             return StringUtil.copyPartialMatches(args[1], Arrays.asList("confirmpassword"), new ArrayList<>());
-
         return new ArrayList<>();
     }
 }

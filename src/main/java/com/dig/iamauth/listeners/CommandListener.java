@@ -11,6 +11,7 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import java.util.List;
 
 public class CommandListener implements Listener {
+    boolean allowedCommandFound;
     Player player;
     String command;
     private Main main;
@@ -22,7 +23,7 @@ public class CommandListener implements Listener {
         command = e.getMessage().toLowerCase();
         player = e.getPlayer();
         if (!Main.getLogged().contains(player.getUniqueId())) {
-            boolean allowedCommandFound = false;
+            allowedCommandFound = false;
             for (String str : main.getConfig().getStringList("accepted-commands-before-login"))
                 if (command.contains(str))
                     allowedCommandFound = true;

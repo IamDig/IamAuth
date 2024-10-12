@@ -13,7 +13,11 @@ import java.io.File;
 public class LoginCommand implements CommandExecutor {
     Player sender;
     private Main main;
-    public LoginCommand(Main main) { this.main = main; }
+
+    public LoginCommand(Main main) {
+        this.main = main;
+    }
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (commandSender instanceof Player) {

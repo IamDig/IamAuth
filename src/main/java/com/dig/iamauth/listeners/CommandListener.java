@@ -16,7 +16,9 @@ public class CommandListener implements Listener {
     String command;
     private Main main;
 
-    public CommandListener(Main main) { this.main = main; }
+    public CommandListener(Main main) {
+        this.main = main;
+    }
 
     @EventHandler
     public void onCommandPreprocess(PlayerCommandPreprocessEvent e) {

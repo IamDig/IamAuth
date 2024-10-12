@@ -15,14 +15,21 @@ import java.io.IOException;
 public class UnregisterCommand implements CommandExecutor {
     Player target;
     Player sender;
+    File file;
+    YamlConfiguration modifyFile;
+    String reason;
     private Main main;
-    public UnregisterCommand(Main main) { this.main = main; }
+
+    public UnregisterCommand(Main main) {
+        this.main = main;
+    }
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (commandSender instanceof Player) {
             sender = (Player) commandSender;
-            File file = new File(main.getDataFolder(), "passwords.yml");
-            YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
+            file = new File(main.getDataFolder(), "passwords.yml");
+            modifyFile = YamlConfiguration.loadConfiguration(file);
             if (sender.hasPermission("iamauth.unregister")) {
                 if (args.length == 1) {
                     if (Bukkit.getPlayer(args[0]) != null) {
@@ -65,7 +72,7 @@ public class UnregisterCommand implements CommandExecutor {
                     } catch (IOException e) {
                         main.getLogger().warning("It was not possible to save passwords.yml");
                     }
-                    String reason = main.getConfig().getString("unregister-kick-reason");
+                    reason = main.getConfig().getString("unregister-kick-reason");
                     target.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
                     main.getLogger().warning( target.getName() + " has been unregistered.");
                 } else main.getLogger().warning("Player does not exist or is offline");

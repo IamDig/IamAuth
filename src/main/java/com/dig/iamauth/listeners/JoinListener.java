@@ -22,7 +22,9 @@ public class JoinListener implements Listener {
     int timer;
     private Main main;
 
-    public JoinListener(Main main) { this.main = main; }
+    public JoinListener(Main main) {
+        this.main = main;
+    }
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {

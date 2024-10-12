@@ -14,7 +14,11 @@ import java.io.IOException;
 public class ChangepasswordCommand implements CommandExecutor {
     Player sender;
     private Main main;
-    public ChangepasswordCommand(Main main) { this.main = main; }
+
+    public ChangepasswordCommand(Main main) {
+        this.main = main;
+    }
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (commandSender instanceof Player) {

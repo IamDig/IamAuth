@@ -15,7 +15,10 @@ import java.net.URL;
 public class AuthCommand implements CommandExecutor {
     Player sender;
     private Main main;
-    public AuthCommand(Main main) { this.main = main; }
+
+    public AuthCommand(Main main) {
+        this.main = main;
+    }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {

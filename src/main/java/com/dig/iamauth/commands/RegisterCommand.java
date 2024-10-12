@@ -13,18 +13,26 @@ import java.io.IOException;
 
 public class RegisterCommand implements CommandExecutor {
     Player sender;
+    File file;
+    YamlConfiguration modifyFile;
+    String password;
+    String confirmpassword;
     private Main main;
-    public RegisterCommand(Main main ) { this.main = main; }
+
+    public RegisterCommand(Main main ) {
+        this.main = main;
+    }
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (commandSender instanceof Player) {
-            File file = new File(main.getDataFolder(), "passwords.yml");
-            YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
+            file = new File(main.getDataFolder(), "passwords.yml");
+            modifyFile = YamlConfiguration.loadConfiguration(file);
             sender = (Player) commandSender;
             if (modifyFile.getString(sender.getUniqueId() + " password") == null)
                 if (args.length == 2) {
-                    String password = args[0];
-                    String confirmpassword = args[1];
+                    password = args[0];
+                    confirmpassword = args[1];
                     if (confirmpassword.equals(password)) {
                         modifyFile.set(sender.getUniqueId() + " password", password);
                         try {

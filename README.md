@@ -29,18 +29,22 @@ IamAuth is a simple 1.8.9+ Authentication plugin made by [@IamDig](https://githu
 
 login-timer: 60 # Seconds
 timer-expired-kick-reason: "&8[&e&l!&8] &cYou took too much time to log in! &8[&e&l!&8]"
+premium-welcome-message:
+  - "&aYou logged with a premium account!"
 register-auth-message:
   - "&cYou have to register to log into the server!"
-  - "&4&l-> &7Use &c/register [password] [confirmpassword]&7 to register"
+  - "&4-> &7Use &c/register [password] [confirmpassword]&7 to register"
 login-auth-message:
   - "&cLog into the server with your password!"
-  - "&4&l-> &7Use &c/login [password] &7to log in"
+  - "&4-> &7Use &c/login [password] &7to log in"
+premium-auth-message:
+  - "&aYou logged in with a &2premium account&a!"
 register-command-message:
   - "&aYou successfully registered your account!"
-  - "&4&l-> &7Change password with &c/changepass [old-pw] [new-pw]"
+  - "&4-> &7Change password with &c/changepass [old-pw] [new-pw]"
 login-command-message:
   - "&aYou successfully logged into the server!"
-  - "&4&l-> &7Change password with &c/changepass [old-pw] [new-pw]"
+  - "&4-> &7Change password with &c/changepass [old-pw] [new-pw]"
 already-registered-message:
   - "&cYou cannot do that! You are already registered!"
 already-logged-message:
@@ -48,6 +52,8 @@ already-logged-message:
 wrong-password-message:
   - "&8[&e&l!&8] &4Wrong password!"
   - "&7Try again: &c/login [password]"
+kick-if-password-wrong: false
+wrong-password-kick-reason: "&8[&e&l!&8] &4Wrong password! Reconnect to try again! &8[&e&l!&8]"
 different-passwords-message:
   - "&8[&e&l!&8] &4Different passwords!"
   - "&7Try again: &c/register [password] [confirmpassword]"
@@ -56,7 +62,7 @@ invalid-command-usage:
   - "&eCorrect usage &8-> &c%usage%"
 missing-permission-message:
   - "&cYou do not have permission to execute this command"
-  - "&eRequired permission &8-> %permission%"
+  - "&eRequired permission &8-> &7%permission%"
 player-not-found-message:
   - "&cPlayer is offline or does not exist."
   - "&4-> &7You can see the list of online players by pressing &cTAB &7while typing the command"
@@ -66,6 +72,9 @@ unregister-command-usage: "/unregister [player]"
 auth-command-usage: "/auth reload, /auth help"
 changepassword-command-usage: "/changepass [old-pw] [new-pw]"
 changepassword-kick-reason: "&aPassword changed! Reconnect to log in with the new password!"
+newpassword-equal-to-oldpassword-message:
+  - "&cNew password is equal to old password"
+  - "&4-> &7Try again: &c/changepass [old-pw] [new-pw]"
 unregister-kick-reason: "&4You have been unregistered! Reconnect to register again!"
 unregister-command-message:
   - "&aSuccessfully unregistered %target%!"

@@ -14,6 +14,11 @@ import java.io.IOException;
 public class ChangepasswordCommand implements CommandExecutor {
     Player sender;
     private Main main;
+    File file;
+    String oldpass;
+    String newpass;
+    String reason;
+    YamlConfiguration modifyFile;
 
     public ChangepasswordCommand(Main main) {
         this.main = main;
@@ -22,13 +27,13 @@ public class ChangepasswordCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (commandSender instanceof Player) {
-            File file = new File(main.getDataFolder(), "passwords.yml");
-            YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
+            file = new File(main.getDataFolder(), "passwords.yml");
+            modifyFile = YamlConfiguration.loadConfiguration(file);
             sender = (Player) commandSender;
             if (args.length == 2)
                 if (args[0].equals(modifyFile.getString(sender.getUniqueId() + " password"))) {
-                    String oldpass = args[0];
-                    String newpass = args[1];
+                    oldpass = args[0];
+                    newpass = args[1];
                     if (!newpass.equals(oldpass)) {
                         modifyFile.set(sender.getUniqueId() + " password", newpass);
                         try {
@@ -36,7 +41,7 @@ public class ChangepasswordCommand implements CommandExecutor {
                         } catch (IOException ex) {
                             main.getLogger().warning("It was not possible to save passwords.yml file");
                         }
-                        String reason = main.getConfig().getString("changepassword-kick-reason");
+                        reason = main.getConfig().getString("changepassword-kick-reason");
                         sender.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
                     } else for (String msg : main.getConfig().getStringList("newpassword-equal-to-oldpassword-message"))
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));

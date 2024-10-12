@@ -5,7 +5,6 @@ import com.dig.iamauth.listeners.*;
 import com.dig.iamauth.commands.tabcompleters.*;
 import lombok.Getter;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -38,6 +37,7 @@ public final class Main extends JavaPlugin {
     private void init() {
 
         // Arrays
+        instance = this;
         logged = new ArrayList<>();
 
         // Logger
@@ -71,5 +71,6 @@ public final class Main extends JavaPlugin {
         getCommand("unregister").setTabCompleter(new UnregisterCompleter());
         getCommand("login").setTabCompleter(new LoginCompleter());
         getCommand("register").setTabCompleter(new RegisterCompleter());
+
     }
 }

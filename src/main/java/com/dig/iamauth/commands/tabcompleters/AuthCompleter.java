@@ -14,7 +14,6 @@ public class AuthCompleter implements TabCompleter {
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] args) {
         if (args.length == 1)
             return StringUtil.copyPartialMatches(args[0], Arrays.asList("help", "reload"), new ArrayList<>());
-
         return new ArrayList<>();
     }
 }

@@ -1,16 +1,11 @@
 package com.dig.iamauth.commands;
 
 import com.dig.iamauth.Main;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.block.CommandBlock;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class AuthCommand implements CommandExecutor {
     Player sender;

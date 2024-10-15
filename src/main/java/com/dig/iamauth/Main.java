@@ -36,7 +36,7 @@ public final class Main extends JavaPlugin {
 
     private void init() {
 
-        // Arrays
+        // Variables
         instance = this;
         logged = new ArrayList<>();
 

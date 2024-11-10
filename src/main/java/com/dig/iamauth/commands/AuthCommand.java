@@ -61,13 +61,11 @@ public class AuthCommand implements CommandExecutor {
                         }
                     }
             }
-        } else {
-            if (commandSender instanceof Player) {
-                sender = (Player) commandSender;
-                for (String msg : main.getConfig().getStringList("invalid-command-usage")) {
-                    msg = msg.replace("%usage%", main.getConfig().getString("auth-command-usage"));
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-                }
+        } else if (commandSender instanceof Player) {
+            sender = (Player) commandSender;
+            for (String msg : main.getConfig().getStringList("invalid-command-usage")) {
+                msg = msg.replace("%usage%", main.getConfig().getString("auth-command-usage"));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
             }
         }
         return false;

@@ -1,54 +1,36 @@
 package com.dig.iamauth.commands;
 
 import com.dig.iamauth.Main;
+import com.dig.iamauth.managers.AuthManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-import java.io.File;
-import java.io.IOException;
-
 public class UnregisterCommand implements CommandExecutor {
-    Player target;
-    Player sender;
-    File file;
-    YamlConfiguration modifyFile;
-    String reason;
     private Main main;
+    private AuthManager authManager;
 
     public UnregisterCommand(Main main) {
         this.main = main;
+        this.authManager = new AuthManager(main);
     }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (commandSender instanceof Player) {
-            sender = (Player) commandSender;
-            file = new File(main.getDataFolder(), "passwords.yml");
-            modifyFile = YamlConfiguration.loadConfiguration(file);
+            Player sender = (Player) commandSender;
             if (sender.hasPermission("iamauth.unregister")) {
                 if (args.length == 1) {
-                    if (Bukkit.getPlayer(args[0]) != null) {
-                        target = Bukkit.getPlayer(args[0]);
-                        modifyFile.set(target.getUniqueId() + " password",null);
-                        try {
-                            modifyFile.save(file);
-                        } catch (IOException e) {
-                            main.getLogger().warning("It was not possible to save passwords.yml");
-                        }
-                        reason = main.getConfig().getString("unregister-kick-reason");
-                        target.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
-                        for (String msg : main.getConfig().getStringList("unregister-command-message")) {
-                            msg = msg.replace("%sender%", sender.getName());
-                            msg = msg.replace("%target%", target.getName());
+                    String targetName = args[0];
+                    if (Bukkit.getPlayer(targetName) != null) {
+                        authManager.unregisterPlayer(sender, targetName);
+                    } else {
+                        for (String msg : main.getConfig().getStringList("player-not-found-message"))
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-                        }
-                    } else for (String msg : main.getConfig().getStringList("player-not-found-message"))
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+                    }
                 } else {
                     for (String msg : main.getConfig().getStringList("invalid-command-usage")) {
                         msg = msg.replace("%usage%", main.getConfig().getString("unregister-command-usage"));
@@ -62,24 +44,12 @@ public class UnregisterCommand implements CommandExecutor {
                 }
             }
         } else {
-            file = new File(main.getDataFolder(), "passwords.yml");
-            modifyFile = YamlConfiguration.loadConfiguration(file);
             if (args.length == 1) {
-                if (Bukkit.getPlayer(args[0]) != null) {
-                    target = Bukkit.getPlayer(args[0]);
-                    modifyFile.set(target.getUniqueId() + " password", null);
-                    try {
-                        modifyFile.save(file);
-                    } catch (IOException e) {
-                        main.getLogger().warning("It was not possible to save passwords.yml");
-                    }
-                    reason = main.getConfig().getString("unregister-kick-reason");
-                    target.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
-                    main.getLogger().warning( target.getName() + " has been unregistered.");
-                } else
-                    main.getLogger().warning("Player does not exist or is offline");
-            } else
+                String targetName = args[0];
+                authManager.unregisterPlayerConsole(targetName);
+            } else {
                 main.getLogger().warning("Invalid command usage. Correct one is: /unregister [player]");
+            }
         }
         return false;
     }

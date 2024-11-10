@@ -3,6 +3,8 @@ package com.dig.iamauth;
 import com.dig.iamauth.commands.*;
 import com.dig.iamauth.listeners.*;
 import com.dig.iamauth.commands.tabcompleters.*;
+import com.dig.iamauth.managers.AuthManager;
+import com.dig.iamauth.managers.FileManager;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,30 +17,26 @@ import java.util.UUID;
 
 public final class Main extends JavaPlugin {
     @Getter
-    private static List<UUID> logged;
-    @Getter
     private static Main instance;
+    @Getter
+    private FileManager fileManager;
+    @Getter
+    private AuthManager authManager;
+
 
     @Override
     public void onEnable() {
         init();
     }
 
-    private void initPasswordFile() {
-        File file = new File(getDataFolder(), "passwords.yml");
-        if (!file.exists())
-            try {
-                file.createNewFile();
-            } catch (IOException ex) {
-                getLogger().warning("It was not possible to create passwords.yml file");
-            }
-    }
 
     private void init() {
 
         // Variables
         instance = this;
-        logged = new ArrayList<>();
+        fileManager = new FileManager(this);
+        fileManager.initFiles();
+        authManager = new AuthManager(this);
 
         // Logger
         getLogger().warning("<------------------------>");
@@ -49,7 +47,6 @@ public final class Main extends JavaPlugin {
 
         // Files
         saveDefaultConfig();
-        initPasswordFile();
 
         // Listeners
         Bukkit.getPluginManager().registerEvents(new JoinListener(this), this);

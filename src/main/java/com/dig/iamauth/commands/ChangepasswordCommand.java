@@ -14,7 +14,6 @@ import java.io.IOException;
 public class ChangepasswordCommand implements CommandExecutor {
     Player sender;
     private Main main;
-    File file;
     String oldpass;
     String newpass;
     String reason;
@@ -27,20 +26,15 @@ public class ChangepasswordCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (commandSender instanceof Player) {
-            file = new File(main.getDataFolder(), "passwords.yml");
-            modifyFile = YamlConfiguration.loadConfiguration(file);
+            modifyFile = main.getFileManager().getPasswords();
             sender = (Player) commandSender;
             if (args.length == 2)
-                if (args[0].equals(modifyFile.getString(sender.getUniqueId() + " password"))) {
+                if (args[0].equals(modifyFile.getString(sender.getUniqueId().toString() + ".password"))) {
                     oldpass = args[0];
                     newpass = args[1];
                     if (!newpass.equals(oldpass)) {
-                        modifyFile.set(sender.getUniqueId() + " password", newpass);
-                        try {
-                            modifyFile.save(file);
-                        } catch (IOException ex) {
-                            main.getLogger().warning("It was not possible to save passwords.yml file");
-                        }
+                        modifyFile.set(sender.getUniqueId().toString() + ".password", newpass);
+                        main.getFileManager().saveFile();
                         reason = main.getConfig().getString("changepassword-kick-reason");
                         sender.kickPlayer(ChatColor.translateAlternateColorCodes('&', reason));
                     } else for (String msg : main.getConfig().getStringList("newpassword-equal-to-oldpassword-message"))

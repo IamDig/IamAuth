@@ -1,6 +1,6 @@
 package com.dig.iamauth.listeners;
 
-import com.dig.iamauth.Main;
+import com.dig.iamauth.managers.CacheManager;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,39 +12,45 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 public class AuthListener implements Listener {
-    Player player;
 
     @EventHandler
-    public void onMove(PlayerMoveEvent e) {
-        player = e.getPlayer();
-        Location f = e.getFrom();
-        Location t = e.getTo();
-        if (!Main.getLogged().contains(player.getUniqueId()))
-            if (f.getBlockX() != t.getBlockX() || f.getBlockY() != t.getBlockY() || f.getBlockZ() != t.getBlockZ())
-                player.teleport(f);
+    public void onPlayerMove(PlayerMoveEvent event) {
+        Player player = event.getPlayer();
+        if (!CacheManager.isLogged(player)) {
+            event.setCancelled(true);
+        }
     }
+
+
     @EventHandler
     public void onBreak(BlockBreakEvent e) {
-        player = e.getPlayer();
-        if (!Main.getLogged().contains(player.getUniqueId()))
+        Player player = e.getPlayer();
+        if (!CacheManager.isLogged(player)) {
             e.setCancelled(true);
+        }
     }
+
     @EventHandler
     public void onPlace(BlockPlaceEvent e) {
-        player = e.getPlayer();
-        if (!Main.getLogged().contains(player.getUniqueId()))
+        Player player = e.getPlayer();
+        if (!CacheManager.isLogged(player)) {
             e.setCancelled(true);
+        }
     }
+
     @EventHandler
     public void onDrop(PlayerDropItemEvent e) {
-        player = e.getPlayer();
-        if (!Main.getLogged().contains(player.getUniqueId()))
+        Player player = e.getPlayer();
+        if (!CacheManager.isLogged(player)) {
             e.setCancelled(true);
+        }
     }
+
     @EventHandler
     public void onInv(InventoryClickEvent e) {
-        player = (Player) e.getWhoClicked();
-        if (!Main.getLogged().contains(player.getUniqueId()))
+        Player player = (Player) e.getWhoClicked();
+        if (!CacheManager.isLogged(player)) {
             e.setCancelled(true);
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.dig.iamauth.listeners;
 
 import com.dig.iamauth.Main;
+import com.dig.iamauth.managers.CacheManager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,7 +22,7 @@ public class CommandListener implements Listener {
     public void onCommandPreprocess(PlayerCommandPreprocessEvent e) {
         command = e.getMessage().toLowerCase();
         player = e.getPlayer();
-        if (!Main.getLogged().contains(player.getUniqueId())) {
+        if (!CacheManager.isLogged(player)) {
             allowedCommandFound = false;
             for (String str : main.getConfig().getStringList("accepted-commands-before-login"))
                 if (command.contains(str))

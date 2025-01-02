@@ -1,4 +1,7 @@
 # IamAuth - v1.0.1.1
+
+NOTE: This plugin will probably have no more updates since the release of a completely rewritten and remastered version of the plugin is planned for 2025.
+
 IamAuth is a simple 1.8.9+ Authentication plugin made by [@IamDig](https://github.com/IamDig) (me) with some help from [@ItalianG0urmet](https://github.com/ItalianG0urmet) and [@Just1Diaxx](https://github.com/Just1Diaxx) (check out their projects!). Of course it's not the best authentication plugin you can find out there, and it's better to use it on small servers instead of big ones. You should also consider the fact that I'm still learning to make plugins, so I ask you not to insult me for how this plugin is made. You should instead give me suggestions to make it better, and of course, since it is open source, you're free to make upgraded versions of the plugin. Don't hesitate to contact me on Discord, both privately (@iamdig_) or by joining my ![Discord Server](https://discord.gg/MzaMYZXtg2)
 
 ## Features
